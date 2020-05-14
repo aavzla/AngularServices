@@ -4,7 +4,7 @@ import { Injectable, EventEmitter, OnInit } from "@angular/core";
 //Marking a class with @Injectable ensures that the compiler will generate the necessary metadata to create the class's dependencies when the class is injected.
 //A service class is properly marked so that a supporting service can be injected upon creation.
 //Please visit, https://angular.io/api/core/Injectable.
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AccountsService implements OnInit {
   accounts = [
     {
