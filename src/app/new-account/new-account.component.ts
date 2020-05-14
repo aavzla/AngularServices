@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 //import { LoggingService } from '../shared/logging.service';
 import { AccountsService } from '../shared/accounts.service';
 
@@ -8,11 +8,17 @@ import { AccountsService } from '../shared/accounts.service';
   styleUrls: ['./new-account.component.css'],
   //providers: [LoggingService]
 })
-export class NewAccountComponent {
+export class NewAccountComponent implements OnInit {
   constructor(
     //private loggingService: LoggingService,
     private accountsService: AccountsService
   ) { }
+
+  ngOnInit() {
+    this.accountsService.statusUpdated.subscribe(
+      (status: string) => alert('New Status: ' + status)
+    );
+  }
 
   onCreateAccount(accountName: string, accountStatus: string) {
     //console.log('loggingService: ' + this.loggingService);
